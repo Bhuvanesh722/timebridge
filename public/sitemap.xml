@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc></url>
+  <url><loc>/#/converter</loc></url>
+  <url><loc>/#/clocks</loc></url>
+  <url><loc>/#/planner</loc></url>
+  <url><loc>/#/directory</loc></url>
+  <url><loc>/#/ist-to-et</loc></url>
+  <url><loc>/#/ist-to-pt</loc></url>
+  <url><loc>/#/ist-to-london</loc></url>
+  <url><loc>/#/ist-to-dubai</loc></url>
+  <url><loc>/#/ist-to-singapore</loc></url>
+  <url><loc>/#/utc-to-ist</loc></url>
+</urlset>

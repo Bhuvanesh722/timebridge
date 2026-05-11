@@ -1,0 +1,10 @@
+{
+  "name": "TimeBridge",
+  "short_name": "TimeBridge",
+  "description": "Convert time zones, compare world clocks, and plan global meetings.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#08766e",
+  "icons": []
+}
