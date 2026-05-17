@@ -28,6 +28,13 @@ textRows.push([
   "washington dc",
   "seattle",
   "houston",
+  "usa",
+  "united states",
+  "russia",
+  "france",
+  "mexico",
+  "south africa",
+  "united kingdom",
 ].join(" "));
 
 const terms = [
@@ -45,6 +52,13 @@ const terms = [
   "india",
   "san francisco",
   "washington dc",
+  "usa",
+  "united states",
+  "russia",
+  "france",
+  "mexico",
+  "south africa",
+  "united kingdom",
 ];
 
 const misses = terms.filter((term) => !textRows.some((row) => row.includes(term)));

@@ -63,6 +63,39 @@ const stateProvinceAliases: Record<string, string[]> = {
   "Europe/London": ["england", "scotland", "wales", "northern ireland"],
 };
 
+const countryAliasesByCode: Record<string, string[]> = {
+  AE: ["uae", "united arab emirates", "emirates"],
+  AR: ["argentina"],
+  AU: ["australia", "aus"],
+  BR: ["brazil", "brasil"],
+  CA: ["canada"],
+  CN: ["china", "mainland china"],
+  DE: ["germany", "deutschland"],
+  ES: ["spain"],
+  FR: ["france", "metropolitan france"],
+  GB: ["uk", "united kingdom", "great britain", "britain", "england"],
+  HK: ["hong kong"],
+  ID: ["indonesia"],
+  IE: ["ireland"],
+  IN: ["india", "bharat"],
+  IT: ["italy"],
+  JP: ["japan"],
+  KR: ["south korea", "korea"],
+  MX: ["mexico"],
+  MY: ["malaysia"],
+  NZ: ["new zealand", "nz"],
+  PH: ["philippines"],
+  PK: ["pakistan"],
+  RU: ["russia", "russian federation"],
+  SA: ["saudi arabia", "ksa"],
+  SG: ["singapore"],
+  TH: ["thailand"],
+  TR: ["turkey", "turkiye"],
+  TW: ["taiwan"],
+  US: ["usa", "united states", "united states of america", "america", "us"],
+  ZA: ["south africa"],
+};
+
 const cityAliases: Record<string, string[]> = {
   "America/Anchorage": ["anchorage", "fairbanks", "juneau"],
   "America/Boise": ["boise"],
@@ -171,6 +204,7 @@ function buildZones(): ZoneInfo[] {
       ...(regionCountryAliases[id] ?? []),
       ...(stateProvinceAliases[id] ?? []),
       ...(cityAliases[id] ?? []),
+      ...(countryAliasesByCode[dbZone?.countryCode ?? ""] ?? []),
       ...(dbZone?.mainCities ?? []).map((item) => item.toLowerCase()),
       dbZone?.alternativeName?.toLowerCase() ?? "",
       dbZone?.abbreviation?.toLowerCase() ?? "",
@@ -211,10 +245,11 @@ export function searchZones(query: string) {
       const text = [zone.city, zone.country, zone.label, zone.id, ...zone.keywords].join(" ").toLowerCase();
       const normalizedText = normalizeSearch(text);
       const exact = zone.keywords.includes(q) || zone.city.toLowerCase() === q || zone.country.toLowerCase() === q ? 20 : 0;
+      const countryExact = normalizeSearch(zone.country) === normalizedQuery ? 26 : 0;
       const normalizedExact = zone.keywords.some((keyword) => normalizeSearch(keyword) === normalizedQuery) || normalizeSearch(zone.city) === normalizedQuery ? 22 : 0;
       const starts = text.split(/\s|\/|_/).some((part) => part.startsWith(q)) ? 8 : 0;
       const normalizedStarts = normalizedText.includes(normalizedQuery) ? 6 : 0;
-      return { zone, score: text.includes(q) || normalizedText.includes(normalizedQuery) ? 1 + exact + normalizedExact + starts + normalizedStarts : 0 };
+      return { zone, score: text.includes(q) || normalizedText.includes(normalizedQuery) ? 1 + exact + countryExact + normalizedExact + starts + normalizedStarts : 0 };
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score)
