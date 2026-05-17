@@ -35,6 +35,13 @@ textRows.push([
   "mexico",
   "south africa",
   "united kingdom",
+  "french guiana",
+  "guam",
+  "puerto rico",
+  "greenland",
+  "azores",
+  "kiribati",
+  "cook islands",
 ].join(" "));
 
 const terms = [
@@ -59,6 +66,13 @@ const terms = [
   "mexico",
   "south africa",
   "united kingdom",
+  "french guiana",
+  "guam",
+  "puerto rico",
+  "greenland",
+  "azores",
+  "kiribati",
+  "cook islands",
 ];
 
 const misses = terms.filter((term) => !textRows.some((row) => row.includes(term)));
