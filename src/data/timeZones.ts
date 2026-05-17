@@ -63,6 +63,74 @@ const stateProvinceAliases: Record<string, string[]> = {
   "Europe/London": ["england", "scotland", "wales", "northern ireland"],
 };
 
+const cityAliases: Record<string, string[]> = {
+  "America/Anchorage": ["anchorage", "fairbanks", "juneau"],
+  "America/Boise": ["boise"],
+  "America/Chicago": [
+    "austin",
+    "chicago",
+    "dallas",
+    "fort worth",
+    "houston",
+    "kansas city",
+    "milwaukee",
+    "minneapolis",
+    "nashville",
+    "new orleans",
+    "oklahoma city",
+    "san antonio",
+    "st louis",
+  ],
+  "America/Denver": ["albuquerque", "boulder", "denver", "salt lake city"],
+  "America/Detroit": ["detroit"],
+  "America/Indiana/Indianapolis": ["indianapolis"],
+  "America/Los_Angeles": [
+    "bay area",
+    "hollywood",
+    "las vegas",
+    "los angeles",
+    "oakland",
+    "portland",
+    "sacramento",
+    "san diego",
+    "san francisco",
+    "sanfrancisco",
+    "sanfranisco",
+    "san jose",
+    "sanjose",
+    "seattle",
+    "silicon valley",
+  ],
+  "America/New_York": [
+    "atlanta",
+    "baltimore",
+    "boston",
+    "charlotte",
+    "cleveland",
+    "columbus",
+    "miami",
+    "new york",
+    "newyork",
+    "nyc",
+    "orlando",
+    "philadelphia",
+    "pittsburgh",
+    "raleigh",
+    "tampa",
+    "washington",
+    "washington dc",
+    "washington d.c.",
+    "washingtondc",
+    "dc",
+  ],
+  "America/Phoenix": ["phoenix", "scottsdale", "tucson"],
+  "Pacific/Honolulu": ["honolulu", "waikiki"],
+};
+
+function normalizeSearch(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
 function titleCase(value: string) {
   return value
     .replace(/_/g, " ")
@@ -102,6 +170,7 @@ function buildZones(): ZoneInfo[] {
     const aliases = [
       ...(regionCountryAliases[id] ?? []),
       ...(stateProvinceAliases[id] ?? []),
+      ...(cityAliases[id] ?? []),
       ...(dbZone?.mainCities ?? []).map((item) => item.toLowerCase()),
       dbZone?.alternativeName?.toLowerCase() ?? "",
       dbZone?.abbreviation?.toLowerCase() ?? "",
@@ -135,13 +204,17 @@ export function friendlyLabel(id: string) {
 
 export function searchZones(query: string) {
   const q = query.trim().toLowerCase();
+  const normalizedQuery = normalizeSearch(query);
   if (!q) return zones.slice(0, 80);
   return zones
     .map((zone) => {
       const text = [zone.city, zone.country, zone.label, zone.id, ...zone.keywords].join(" ").toLowerCase();
+      const normalizedText = normalizeSearch(text);
       const exact = zone.keywords.includes(q) || zone.city.toLowerCase() === q || zone.country.toLowerCase() === q ? 20 : 0;
+      const normalizedExact = zone.keywords.some((keyword) => normalizeSearch(keyword) === normalizedQuery) || normalizeSearch(zone.city) === normalizedQuery ? 22 : 0;
       const starts = text.split(/\s|\/|_/).some((part) => part.startsWith(q)) ? 8 : 0;
-      return { zone, score: text.includes(q) ? 1 + exact + starts : 0 };
+      const normalizedStarts = normalizedText.includes(normalizedQuery) ? 6 : 0;
+      return { zone, score: text.includes(q) || normalizedText.includes(normalizedQuery) ? 1 + exact + normalizedExact + starts + normalizedStarts : 0 };
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score)
