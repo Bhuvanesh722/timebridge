@@ -99,6 +99,22 @@ export function Converter({ prefs, setPrefs, setToast, activePreset }: Converter
         <button onClick={() => shareText("TimeBridge conversion", `${whatsapp}\n\n${shareUrl}`, setToast)}><Share2 size={18} /> Share</button>
         <button onClick={() => { setDate(today); setTime("21:00"); setSourceZone("Asia/Kolkata"); }}><RefreshCcw size={18} /> Reset</button>
       </div>
+      <section className="supportContent">
+        <article>
+          <h2>Reading converted timezone results</h2>
+          <p>
+            A converted time is only reliable when the date, city, abbreviation, and UTC offset are shown together. TimeBridge keeps those
+            details visible so copied meeting text is easier for recipients to verify.
+          </p>
+        </article>
+        <article>
+          <h2>Why city names matter</h2>
+          <p>
+            Abbreviations can be reused across countries. Searching by city or country helps select the intended IANA timezone, which is safer
+            than manually assuming a fixed EST, PST, CST, or IST offset.
+          </p>
+        </article>
+      </section>
     </section>
   );
 }

@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { Toast } from "./components/Toast";
+import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
 import { Converter } from "./pages/Converter";
 import { Directory } from "./pages/Directory";
+import { Guides } from "./pages/Guides";
 import { Home } from "./pages/Home";
 import { MeetingPlanner } from "./pages/MeetingPlanner";
+import { Privacy } from "./pages/Privacy";
 import { WorldClocks } from "./pages/WorldClocks";
 import { pageFromHash, presetFromHash } from "./lib/navigation";
 import { loadPrefs, savePrefs } from "./lib/preferences";
@@ -49,6 +54,11 @@ export function App() {
       {page === "clocks" && <WorldClocks prefs={prefs} setPrefs={setPrefs} setToast={setToast} />}
       {page === "planner" && <MeetingPlanner prefs={prefs} setToast={setToast} />}
       {page === "directory" && <Directory prefs={prefs} />}
+      {page === "guides" && <Guides />}
+      {page === "about" && <About />}
+      {page === "privacy" && <Privacy />}
+      {page === "contact" && <Contact />}
+      <Footer openPage={openPage} />
       <Toast message={toast} />
     </main>
   );

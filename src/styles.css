@@ -656,6 +656,81 @@ select:focus {
   box-shadow: var(--soft-shadow);
 }
 
+.homeContent,
+.supportContent,
+.contentPage,
+.siteFooter {
+  padding-inline: clamp(16px, 5vw, 72px);
+}
+
+.homeContent,
+.supportContent {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.homeContent {
+  padding-bottom: 64px;
+}
+
+.supportContent article,
+.homeContent article,
+.contentBlock {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--soft-shadow);
+}
+
+.supportContent h2,
+.homeContent h2,
+.contentBlock h2 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.supportContent p,
+.homeContent p,
+.contentPage p,
+.siteFooter p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contentPage {
+  display: grid;
+  gap: 18px;
+  max-width: 1040px;
+  padding-block: 46px 72px;
+}
+
+.contentPage h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  max-width: 900px;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.siteFooter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding-block: 24px 34px;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 58%, transparent);
+}
+
+.siteFooter nav {
+  justify-content: end;
+}
+
 .toast {
   position: fixed;
   right: 18px;
@@ -691,7 +766,10 @@ select:focus {
   .formGrid,
   .featureGrid,
   .resultsGrid,
-  .clockGrid {
+  .clockGrid,
+  .homeContent,
+  .supportContent,
+  .contentGrid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -706,6 +784,10 @@ select:focus {
   .featureGrid,
   .resultsGrid,
   .clockGrid,
+  .homeContent,
+  .supportContent,
+  .contentGrid,
+  .siteFooter,
   .addRow,
   .directoryRow {
     grid-template-columns: 1fr;
@@ -743,5 +825,9 @@ select:focus {
   .clockActions {
     grid-template-columns: 42px 42px minmax(0, 1fr);
     margin-right: -40px;
+  }
+
+  .siteFooter nav {
+    justify-content: start;
   }
 }

@@ -6,6 +6,10 @@ export function pageFromHash(): Page {
   if (hash === "clocks") return "clocks";
   if (hash === "planner") return "planner";
   if (hash === "directory") return "directory";
+  if (hash === "guides") return "guides";
+  if (hash === "about") return "about";
+  if (hash === "privacy") return "privacy";
+  if (hash === "contact") return "contact";
   if (hash === "converter" || conversionPresets.some((preset) => preset.slug === hash)) return "converter";
   return "home";
 }

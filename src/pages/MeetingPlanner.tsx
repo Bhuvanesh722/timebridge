@@ -67,6 +67,15 @@ export function MeetingPlanner({ prefs, setToast }: { prefs: Preferences; setToa
         ))}
       </div>
       <div className="actionBar"><button onClick={() => copyText(details, setToast)}><Copy size={18} /> Copy meeting details</button></div>
+      <section className="supportContent">
+        <article>
+          <h2>How meeting score is interpreted</h2>
+          <p>
+            Meeting scores compare the suggested time against each selected zone's working hours. A high score means the slot is comfortable for
+            most participants, while a lower score means at least one location is early, late, or outside normal work hours.
+          </p>
+        </article>
+      </section>
     </section>
   );
 }

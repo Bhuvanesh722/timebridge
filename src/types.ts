@@ -1,4 +1,4 @@
-export type Page = "home" | "converter" | "clocks" | "planner" | "directory";
+export type Page = "home" | "converter" | "clocks" | "planner" | "directory" | "guides" | "about" | "privacy" | "contact";
 export type TimeFormat = "12h" | "24h";
 export type Theme = "light" | "dark";
 

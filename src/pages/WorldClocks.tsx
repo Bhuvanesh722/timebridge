@@ -59,6 +59,15 @@ export function WorldClocks({ prefs, setPrefs, setToast }: WorldClocksProps) {
           <ClockCard key={id} id={id} now={now} prefs={prefs} setPrefs={setPrefs} setToast={setToast} moveClock={moveClock} />
         ))}
       </div>
+      <section className="supportContent">
+        <article>
+          <h2>Using world clocks for daily coordination</h2>
+          <p>
+            Pinned clocks are useful for repeated cross-border work. Keeping a home timezone alongside client or team locations makes it easier
+            to notice when a call falls outside normal working hours.
+          </p>
+        </article>
+      </section>
     </section>
   );
 }

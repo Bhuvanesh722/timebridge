@@ -16,7 +16,7 @@ export function Header({ page, prefs, openPage, setPrefs }: HeaderProps) {
         <span>TimeBridge</span>
       </button>
       <nav aria-label="Primary navigation">
-        {(["converter", "clocks", "planner", "directory"] as Page[]).map((item) => (
+        {(["converter", "clocks", "planner", "directory", "guides"] as Page[]).map((item) => (
           <button key={item} className={page === item ? "active" : ""} onClick={() => openPage(item)}>
             {item === "clocks" ? "World Clocks" : item[0].toUpperCase() + item.slice(1)}
           </button>

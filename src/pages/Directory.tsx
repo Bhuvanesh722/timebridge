@@ -22,6 +22,15 @@ export function Directory({ prefs }: { prefs: Preferences }) {
           </article>
         ))}
       </div>
+      <section className="supportContent">
+        <article>
+          <h2>Timezone directory coverage</h2>
+          <p>
+            The directory is based on IANA timezone identifiers and country-aware timezone data. Some countries have one official timezone while
+            others include overseas territories or regions with separate local rules.
+          </p>
+        </article>
+      </section>
     </section>
   );
 }

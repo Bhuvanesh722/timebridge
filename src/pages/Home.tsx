@@ -39,6 +39,22 @@ export function Home({ openPage, prefs }: { openPage: (page: Page, preset?: Conv
         <Feature icon={<Clock />} title="Avoid timezone mistakes" text="See date changes, daylight saving labels, UTC offsets, and clear timezone names." />
         <Feature icon={<Copy />} title="Copy and share quickly" text="Copy meeting times for WhatsApp, email, or chat in one click." />
       </section>
+      <section className="homeContent">
+        <article>
+          <h2>Timezone conversion for everyday global work</h2>
+          <p>
+            TimeBridge focuses on practical scheduling problems: Indian teams working with US clients, students joining overseas webinars,
+            freelancers sharing availability, and remote teams comparing work-hour overlap across several countries.
+          </p>
+        </article>
+        <article>
+          <h2>Clear dates, offsets, and daylight saving labels</h2>
+          <p>
+            The site avoids silent offset assumptions. Results include the converted date, local time, timezone abbreviation, and UTC offset so
+            users can spot yesterday/today/tomorrow changes before sharing a meeting time.
+          </p>
+        </article>
+      </section>
     </>
   );
 }
