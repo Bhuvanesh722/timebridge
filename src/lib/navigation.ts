@@ -1,20 +1,24 @@
 import { conversionPresets } from "../data/presets";
 import type { Page } from "../types";
 
-export function pageFromHash(): Page {
-  const hash = location.hash.replace("#/", "");
-  if (hash === "clocks") return "clocks";
-  if (hash === "planner") return "planner";
-  if (hash === "directory") return "directory";
-  if (hash === "guides") return "guides";
-  if (hash === "about") return "about";
-  if (hash === "privacy") return "privacy";
-  if (hash === "contact") return "contact";
-  if (hash === "converter" || conversionPresets.some((preset) => preset.slug === hash)) return "converter";
+function currentRoute() {
+  return location.hash.startsWith("#/") ? location.hash.replace("#/", "") : location.pathname.replace(/^\/+/, "");
+}
+
+export function pageFromLocation(): Page {
+  const route = currentRoute();
+  if (route === "clocks") return "clocks";
+  if (route === "planner") return "planner";
+  if (route === "directory") return "directory";
+  if (route === "guides") return "guides";
+  if (route === "about") return "about";
+  if (route === "privacy") return "privacy";
+  if (route === "contact") return "contact";
+  if (route === "converter" || conversionPresets.some((preset) => preset.slug === route)) return "converter";
   return "home";
 }
 
-export function presetFromHash() {
-  const hash = location.hash.replace("#/", "");
-  return conversionPresets.find((preset) => preset.slug === hash) ?? null;
+export function presetFromLocation() {
+  const route = currentRoute();
+  return conversionPresets.find((preset) => preset.slug === route) ?? null;
 }

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/</loc></url>
-  <url><loc>/#/converter</loc></url>
-  <url><loc>/#/clocks</loc></url>
-  <url><loc>/#/planner</loc></url>
-  <url><loc>/#/directory</loc></url>
-  <url><loc>/#/guides</loc></url>
-  <url><loc>/#/about</loc></url>
-  <url><loc>/#/privacy</loc></url>
-  <url><loc>/#/contact</loc></url>
-  <url><loc>/#/ist-to-et</loc></url>
-  <url><loc>/#/ist-to-pt</loc></url>
-  <url><loc>/#/ist-to-london</loc></url>
-  <url><loc>/#/ist-to-dubai</loc></url>
-  <url><loc>/#/ist-to-singapore</loc></url>
-  <url><loc>/#/utc-to-ist</loc></url>
+  <url><loc>https://timebridge.shop/</loc></url>
+  <url><loc>https://timebridge.shop/converter</loc></url>
+  <url><loc>https://timebridge.shop/clocks</loc></url>
+  <url><loc>https://timebridge.shop/planner</loc></url>
+  <url><loc>https://timebridge.shop/directory</loc></url>
+  <url><loc>https://timebridge.shop/guides</loc></url>
+  <url><loc>https://timebridge.shop/about</loc></url>
+  <url><loc>https://timebridge.shop/privacy</loc></url>
+  <url><loc>https://timebridge.shop/contact</loc></url>
+  <url><loc>https://timebridge.shop/ist-to-et</loc></url>
+  <url><loc>https://timebridge.shop/ist-to-pt</loc></url>
+  <url><loc>https://timebridge.shop/ist-to-london</loc></url>
+  <url><loc>https://timebridge.shop/ist-to-dubai</loc></url>
+  <url><loc>https://timebridge.shop/ist-to-singapore</loc></url>
+  <url><loc>https://timebridge.shop/utc-to-ist</loc></url>
 </urlset>

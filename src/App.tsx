@@ -11,21 +11,21 @@ import { Home } from "./pages/Home";
 import { MeetingPlanner } from "./pages/MeetingPlanner";
 import { Privacy } from "./pages/Privacy";
 import { WorldClocks } from "./pages/WorldClocks";
-import { pageFromHash, presetFromHash } from "./lib/navigation";
+import { pageFromLocation, presetFromLocation } from "./lib/navigation";
 import { loadPrefs, savePrefs } from "./lib/preferences";
 import type { ConversionPreset, Page } from "./types";
 
 export function App() {
-  const [page, setPage] = useState<Page>(pageFromHash);
-  const [activePreset, setActivePreset] = useState<ConversionPreset | null>(presetFromHash);
+  const [page, setPage] = useState<Page>(pageFromLocation);
+  const [activePreset, setActivePreset] = useState<ConversionPreset | null>(presetFromLocation);
   const [prefs, setPrefs] = useState(loadPrefs);
   const [toast, setToast] = useState("");
 
   const openPage = (nextPage: Page, preset: ConversionPreset | null = null) => {
     setPage(nextPage);
     setActivePreset(preset);
-    const hash = preset ? preset.slug : nextPage === "home" ? "" : nextPage;
-    history.pushState(null, "", hash ? `#/${hash}` : location.pathname + location.search);
+    const path = preset ? preset.slug : nextPage === "home" ? "" : nextPage;
+    history.pushState(null, "", path ? `/${path}` : "/");
   };
 
   useEffect(() => savePrefs(prefs), [prefs]);
@@ -38,12 +38,16 @@ export function App() {
     return () => window.clearTimeout(timeout);
   }, [toast]);
   useEffect(() => {
-    const syncHash = () => {
-      setPage(pageFromHash());
-      setActivePreset(presetFromHash());
+    const syncRoute = () => {
+      setPage(pageFromLocation());
+      setActivePreset(presetFromLocation());
     };
-    window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
+    window.addEventListener("popstate", syncRoute);
+    window.addEventListener("hashchange", syncRoute);
+    return () => {
+      window.removeEventListener("popstate", syncRoute);
+      window.removeEventListener("hashchange", syncRoute);
+    };
   }, []);
 
   return (
