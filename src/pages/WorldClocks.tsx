@@ -63,8 +63,34 @@ export function WorldClocks({ prefs, setPrefs, setToast }: WorldClocksProps) {
         <article>
           <h2>Using world clocks for daily coordination</h2>
           <p>
-            Pinned clocks are useful for repeated cross-border work. Keeping a home timezone alongside client or team locations makes it easier
-            to notice when a call falls outside normal working hours.
+            Pinning a set of clocks that matches your regular working relationships gives you a quick
+            reference for the current time in each location without needing to open a converter.
+            Keeping your home timezone alongside the locations of your most frequent contacts makes
+            it immediately visible whether a spontaneous call would fall within the other person's
+            working hours. The day/night indicator on each clock provides an at-a-glance signal
+            for whether it is currently daytime or nighttime in that location.
+          </p>
+        </article>
+        <article>
+          <h2>Setting your home timezone</h2>
+          <p>
+            The home timezone is used to calculate the relative offset shown on each clock card —
+            for example, "5h 30m ahead of Kolkata" or "10h 30m behind New York." Setting your home
+            timezone to your own location makes these relative labels meaningful. You can set any
+            clock as your home timezone by clicking the "Set home" button on that card. The home
+            timezone is also the default source in the time converter and the reference for
+            recent zones.
+          </p>
+        </article>
+        <article>
+          <h2>Reordering and managing pinned clocks</h2>
+          <p>
+            The up and down arrows on each clock card let you change the display order. Grouping
+            clocks by region or by how frequently you contact those locations can make the
+            world clocks page easier to scan quickly. You can pin up to ten clocks. If you want
+            to start fresh, the "Clear saved data" button removes all pinned clocks, the home
+            timezone, theme setting, and recent zones from your browser, and resets the application
+            to its default state with the standard preset locations.
           </p>
         </article>
       </section>

@@ -69,10 +69,50 @@ export function MeetingPlanner({ prefs, setToast }: { prefs: Preferences; setToa
       <div className="actionBar"><button onClick={() => copyText(details, setToast)}><Copy size={18} /> Copy meeting details</button></div>
       <section className="supportContent">
         <article>
-          <h2>How meeting score is interpreted</h2>
+          <h2>How meeting scores are calculated</h2>
           <p>
-            Meeting scores compare the suggested time against each selected zone's working hours. A high score means the slot is comfortable for
-            most participants, while a lower score means at least one location is early, late, or outside normal work hours.
+            Each half-hour slot in the selected day is scored against every participant's local working
+            hours. A slot that falls entirely within standard working hours (typically 9 AM–6 PM local
+            time) for a given participant scores 100. A slot that falls between 7 AM and 10 PM local
+            time scores 65 — outside core hours but not unreasonable for an occasional call. A slot
+            outside that range scores 25, indicating the participant would need to attend outside
+            comfortable working hours. The final score for each slot is the average across all
+            participants.
+          </p>
+        </article>
+        <article>
+          <h2>Interpreting "Excellent", "Good", "Manageable", and "Difficult"</h2>
+          <p>
+            An "Excellent" rating (90–100) means all selected participants have the slot within their
+            standard working hours — the ideal outcome. "Good" (75–89) means most participants are
+            comfortably within their day, with at most one person near the edge. "Manageable" (50–74)
+            means at least one participant is outside core hours but not yet in an unreasonable range
+            (for example, early morning or late evening). "Difficult" (below 50) means one or more
+            participants would need to attend late at night, very early in the morning, or at another
+            time that is genuinely inconvenient on a recurring basis.
+          </p>
+        </article>
+        <article>
+          <h2>When no good overlap exists</h2>
+          <p>
+            For some timezone combinations — particularly India and the US West Coast — there is often
+            no slot that scores "Excellent." India Standard Time is 12.5 to 13.5 hours ahead of US
+            Pacific Time, meaning the two standard working days barely overlap at all. When the planner
+            returns only "Manageable" or "Difficult" results, the practical options are to choose the
+            highest-scoring slot available, rotate the inconvenient slot between team members on a
+            weekly basis, or split the meeting into asynchronous segments with recorded video and
+            written summaries instead of a live call.
+          </p>
+        </article>
+        <article>
+          <h2>Using the timeline view</h2>
+          <p>
+            The timeline above the results shows each participant's 24-hour day as a row of hourly
+            blocks. Highlighted blocks represent each location's standard working hours. By scanning
+            across rows, you can visually identify where working-hour bands overlap. A column where
+            all rows show highlighted blocks is a candidate slot for an "Excellent" or "Good" meeting.
+            This overview is useful when planning recurring meetings where you want to understand the
+            structural overlap at a glance rather than reading individual slot scores.
           </p>
         </article>
       </section>

@@ -26,24 +26,86 @@
         <h1>TimeBridge - Time Zone Converter and Meeting Planner</h1>
         <p>
           TimeBridge helps users convert time zones, compare world clocks, and plan global meetings with clear dates,
-          daylight saving labels, UTC offsets, and copyable meeting text.
+          daylight saving labels, UTC offsets, and copyable meeting text. The site is designed for remote teams,
+          freelancers, students, travelers, and professionals coordinating between India, the United States, the
+          United Kingdom, Europe, the Middle East, and Asia-Pacific.
         </p>
+
+        <nav>
+          <a href="/converter">Time Converter</a> |
+          <a href="/clocks">World Clocks</a> |
+          <a href="/planner">Meeting Planner</a> |
+          <a href="/directory">Timezone Directory</a> |
+          <a href="/guides">Guides</a> |
+          <a href="/about">About</a> |
+          <a href="/privacy">Privacy Policy</a> |
+          <a href="/contact">Contact</a>
+        </nav>
+
         <section>
-          <h2>Timezone conversion for global work</h2>
+          <h2>Time zone conversion with daylight saving awareness</h2>
           <p>
-            The site focuses on practical scheduling needs for remote teams, freelancers, students, travelers, and
-            professionals coordinating between India, the United States, Europe, the Middle East, and Asia-Pacific.
+            India Standard Time (IST) is UTC+5:30 throughout the year. India does not observe daylight saving time,
+            but the United States, the United Kingdom, Canada, and most of Europe do. This means the offset between
+            India and these regions changes by one hour twice a year. TimeBridge uses the date entered in the
+            converter to apply the correct seasonal offset automatically, so you always get the right result
+            regardless of the time of year.
           </p>
         </section>
+
         <section>
-          <h2>Publisher content and guides</h2>
+          <h2>Popular timezone conversions for Indian professionals</h2>
           <p>
-            TimeBridge includes original guides about date changes, daylight saving time, timezone abbreviations, and
-            better meeting planning habits for international work.
+            TimeBridge includes pre-configured conversion pages for the most common India-international pairs:
           </p>
+          <ul>
+            <li><a href="/ist-to-et">IST to Eastern Time (New York)</a> — 10.5 hours behind IST in winter, 9.5 hours in summer</li>
+            <li><a href="/ist-to-pt">IST to Pacific Time (Los Angeles)</a> — 13.5 hours behind IST in winter, 12.5 hours in summer</li>
+            <li><a href="/ist-to-london">IST to London (GMT/BST)</a> — 5.5 hours behind IST in winter, 4.5 hours in summer</li>
+            <li><a href="/ist-to-dubai">IST to Dubai (GST)</a> — always 1.5 hours behind IST, no DST in UAE</li>
+            <li><a href="/ist-to-singapore">IST to Singapore (SGT)</a> — always 2.5 hours ahead of IST</li>
+            <li><a href="/utc-to-ist">UTC to IST</a> — IST is always UTC+5:30</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Meeting planner for global teams</h2>
           <p>
-            Important pages: <a href="/guides">Guides</a>, <a href="/about">About</a>,
-            <a href="/privacy">Privacy Policy</a>, and <a href="/contact">Contact</a>.
+            The meeting planner scores all 48 half-hour slots in a day against each participant's local working hours.
+            Slots are rated Excellent, Good, Manageable, or Difficult based on how well they fit within standard
+            business hours for all selected locations. This is particularly useful for India-US scheduling,
+            where the time gap is large and genuine work-hour overlap is limited.
+          </p>
+        </section>
+
+        <section>
+          <h2>Guides for international scheduling</h2>
+          <p>
+            TimeBridge includes original guides on the most common timezone challenges:
+            how to convert IST to US time zones correctly, daylight saving time explained for Indian professionals,
+            timezone abbreviation confusion (IST/CST/EST/BST each refer to multiple countries),
+            finding the best meeting time between India and the US, India and UK/Europe scheduling,
+            understanding UTC offsets, how to avoid date-change mistakes, and common international scheduling errors.
+          </p>
+          <p>Read the full guides at <a href="/guides">timebridge.shop/guides</a>.</p>
+        </section>
+
+        <section>
+          <h2>World clocks and timezone directory</h2>
+          <p>
+            The world clocks page lets you pin up to ten timezones and see live-updating times with day/night
+            indicators, UTC offsets, and relative offset labels compared to your home timezone. The timezone
+            directory provides a searchable list of all supported IANA timezone identifiers with their
+            current local time, abbreviation, and UTC offset.
+          </p>
+        </section>
+
+        <section>
+          <h2>No account required</h2>
+          <p>
+            TimeBridge does not require registration or login. Preferences such as pinned clocks, home timezone,
+            theme, and recent zones are stored in browser localStorage on your device. No personal data is sent
+            to a server for timezone calculations. The application works offline once loaded.
           </p>
         </section>
       </main>

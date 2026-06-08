@@ -731,6 +731,11 @@ select:focus {
   justify-content: end;
 }
 
+.presetGuide {
+  display: grid;
+  gap: 16px;
+}
+
 .toast {
   position: fixed;
   right: 18px;
