@@ -610,6 +610,17 @@ select:focus {
   transform-origin: center 35px;
 }
 
+.analog .tick {
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 5px;
+  width: 2px;
+  height: 6px;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--primary) 35%, var(--line));
+  transform-origin: center 38px;
+}
+
 .timeline {
   display: grid;
   gap: 10px;
@@ -641,6 +652,37 @@ select:focus {
 
 .timelineRow .work {
   background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--sky) 50%, var(--primary)));
+}
+
+.timelineAxis {
+  display: grid;
+  grid-template-columns: 130px minmax(520px, 1fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.timelineAxis > span {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.timelineAxis > div {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 2px;
+}
+
+.timelineAxis > div span {
+  font-size: 0.66rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.timelineLegend {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .directory {

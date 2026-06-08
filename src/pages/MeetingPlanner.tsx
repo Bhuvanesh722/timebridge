@@ -1,6 +1,6 @@
 import { Copy } from "lucide-react";
 import { useMemo, useState } from "react";
-import { zones, zoneMap } from "../data/timeZones";
+import { zoneMap } from "../data/timeZones";
 import { copyText } from "../lib/share";
 import { abbreviation, dateTimeToInstant, formatInZone, minutesInZone } from "../lib/time";
 import type { Preferences } from "../types";
@@ -50,12 +50,17 @@ export function MeetingPlanner({ prefs, setToast }: { prefs: Preferences; setToa
         </div>
       </div>
       <div className="timeline">
+        <div className="timelineAxis">
+          <span>Local hour</span>
+          <div>{Array.from({ length: 24 }, (_, hour) => <span key={hour}>{hour % 3 === 0 ? hour : ""}</span>)}</div>
+        </div>
         {participants.map((id) => (
           <div key={id} className="timelineRow">
             <strong>{zoneMap.get(id)?.city}</strong>
             <div>{Array.from({ length: 24 }, (_, hour) => <span key={hour} className={hour >= zoneMap.get(id)!.workStart && hour < zoneMap.get(id)!.workEnd ? "work" : ""} />)}</div>
           </div>
         ))}
+        <p className="timelineLegend">Highlighted blocks show each location's standard working hours (09:00–18:00 local). Scroll sideways on smaller screens to view the full day.</p>
       </div>
       <div className="resultsGrid">
         {slots.map((slot) => (

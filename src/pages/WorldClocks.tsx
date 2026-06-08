@@ -124,5 +124,13 @@ function AnalogClock({ date, zone }: { date: Date; zone: string }) {
   const parts = partsInZone(date, zone);
   const hour = ((parts.hour % 12) + parts.minute / 60) * 30;
   const minute = parts.minute * 6;
-  return <div className="analog"><span style={{ transform: `rotate(${hour}deg)` }} /><b style={{ transform: `rotate(${minute}deg)` }} /></div>;
+  return (
+    <div className="analog">
+      {Array.from({ length: 12 }, (_, i) => (
+        <i key={i} className="tick" style={{ transform: `rotate(${i * 30}deg)` }} />
+      ))}
+      <span style={{ transform: `rotate(${hour}deg)` }} />
+      <b style={{ transform: `rotate(${minute}deg)` }} />
+    </div>
+  );
 }

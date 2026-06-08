@@ -1,9 +1,9 @@
-import { Copy, Link, Plus, RefreshCcw, Share2, Trash2 } from "lucide-react";
+import { Copy, Link, Plus, RefreshCcw, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SelectZone } from "../components/SelectZone";
 import { friendlyLabel, zoneMap } from "../data/timeZones";
 import { ambiguousWarning, abbreviation, dateBadge, dateLabel, dateTimeToInstant, formatInZone, offsetLabel, timeOnly } from "../lib/time";
-import { copyText, rememberRecent, shareText } from "../lib/share";
+import { copyText, rememberRecent } from "../lib/share";
 import type { ConversionPreset, Preferences, TimeFormat } from "../types";
 
 type ConverterProps = {
@@ -361,8 +361,7 @@ export function Converter({ prefs, setPrefs, setToast, activePreset }: Converter
         <button onClick={() => copyText(whatsapp, setToast)}><Copy size={18} /> WhatsApp</button>
         <button onClick={() => copyText(email, setToast)}><Copy size={18} /> Email</button>
         <button onClick={() => copyText(short, setToast)}><Copy size={18} /> Short</button>
-        <button onClick={() => copyText(shareUrl, setToast)}><Link size={18} /> Share URL</button>
-        <button onClick={() => shareText("TimeBridge conversion", `${whatsapp}\n\n${shareUrl}`, setToast)}><Share2 size={18} /> Share</button>
+        <button onClick={() => copyText(shareUrl, setToast)}><Link size={18} /> Copy link</button>
         <button onClick={() => { setDate(today); setTime("21:00"); setSourceZone("Asia/Kolkata"); }}><RefreshCcw size={18} /> Reset</button>
       </div>
 
